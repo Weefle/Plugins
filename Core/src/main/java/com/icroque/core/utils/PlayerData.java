@@ -35,9 +35,6 @@ public class PlayerData implements IDocument {
         this.attachment = player.addAttachment(Core.instance);
 
         playerData.put(this.player, this);
-        scoreboard = new Scoreboard(this);
-        scoreboard.setLine(0, "salut");
-        scoreboard.setName("hello les gens");
         load();
     }
 

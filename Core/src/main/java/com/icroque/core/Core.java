@@ -3,6 +3,7 @@ package com.icroque.core;
 import com.icroque.core.commands.*;
 import com.icroque.core.database.Database;
 import com.icroque.core.listeners.*;
+import com.icroque.core.utils.BungeeUtils;
 import com.icroque.core.utils.ConfigUtils;
 import com.icroque.core.utils.PlayerData;
 import org.bukkit.Bukkit;
@@ -25,6 +26,7 @@ public class Core extends JavaPlugin implements Listener {
             getLogger().severe("Erreur, impossible de se connecter a MongoDB.");
             getPluginLoader().disablePlugin(this);
         }
+        BungeeUtils.getInstance();
         TimeZone.setDefault(TimeZone.getTimeZone("Europe/Paris"));
         getConfig().options().copyDefaults(true);
         saveDefaultConfig();

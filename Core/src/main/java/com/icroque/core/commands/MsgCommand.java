@@ -1,7 +1,6 @@
 package com.icroque.core.commands;
 
 import com.icroque.core.utils.PlayerData;
-import com.icroque.core.utils.RabbitMQ;
 import com.icroque.core.utils.TextUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -25,8 +24,6 @@ public class MsgCommand extends Command {
                 target.sendMessage("§f["+ (sender.isOp() ? "§4" : "§e") + sender.getName() +" §f -> "+ (target.isOp() ? "§4" : "§e") +"Moi§f] §6"+ msg);
                 sender.sendMessage("§f["+ (target.isOp() ? "§4" : "§e") + target.getName() +" §f <- "+ (sender.isOp() ? "§4" : "§e") +"Moi§f] §6"+ msg);
                 if(sender instanceof Player) PlayerData.findByName(target.getName()).replyTo = sender.getName();
-
-                RabbitMQ.getInstance().publish("minecraft", "pm", msg);
             }
             else {
                 sender.sendMessage("§f[§cErreur§f] §cLe joueur n'est pas connecté.");

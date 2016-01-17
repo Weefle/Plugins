@@ -32,4 +32,13 @@ public class ConfigUtils {
         config.set(path +".yaw", location.getYaw());
         config.set(path +".pitch", location.getPitch());
     }
+
+    public static Cuboid getCuboid(FileConfiguration config, String path) {
+        return new Cuboid(getLocation(config, path +".loc1"), getLocation(config, path +".loc2"));
+    }
+
+    public static void setCuboid(FileConfiguration config, String path, Cuboid cuboid) {
+        config.set(path +".loc1", cuboid.getLoc1());
+        config.set(path +".loc2", cuboid.getLoc2());
+    }
 }

@@ -1,16 +1,35 @@
 package com.icroque.core.utils;
 
+import com.google.gson.Gson;
+import lombok.Getter;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Rémi on 09/01/2016.
  */
 public class BungeeUtils {
+    private static BungeeUtils instance = null;
+    @Getter
+    private List<String> players;
 
-    public static ServerStatus status(String adress, int port) {
+    public BungeeUtils() {
+        instance = this;
+        RabbitMQ.getInstance().subscribe((String route, String message) -> {
+            if(route.equalsIgnoreCase("getplayers")) {
+                players = new Gson().fromJson(message, List.class);
+            }
+        }, "minecraft");
+    }
+
+
+
+    public ServerStatus pingServer(String adress, int port) {
         try {
             Socket socket = new Socket();
             socket.connect(new InetSocketAddress(adress, port), 1000);
@@ -32,6 +51,13 @@ public class BungeeUtils {
         }
         catch (Exception e) {}
         return null;
+    }
+
+    public static BungeeUtils getInstance() {
+        if(instance == null) {
+            instance = new BungeeUtils();
+        }
+        return instance;
     }
 
     public static class ServerStatus {
