@@ -1,0 +1,12 @@
+mongo:
+  host: 192.168.1.55
+  port: 27017
+  credential:
+    user: ""
+    password: ""
+    database: "minecraft"
+rabbitmq:
+  user: "root"
+  pasword: "root"
+  host: "192.168.99.100"
+  port: 32773

@@ -1,0 +1,6 @@
+name: Hub
+version: 1.0.0
+main: com.icroque.hub.Hub
+author: iCroque
+website: http://www.icroque.com
+commands:

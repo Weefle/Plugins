@@ -1,0 +1,95 @@
+name: Core
+version: 1.0.0
+main: com.icroque.core.Core
+author: iCroque
+website: http://www.icroque.com
+commands:
+  inventory:
+    usage: /<command> <player>
+    description: Permet de voir l'inventaire d'un joueur.
+    aliases: [inv, seeinv, invsee, watchinv, invwatch]
+  clear:
+    usage: /<command> [player]
+    description: Permet de nettoyer l'inventaire d'un joueur.
+    aliases: [clearinventory, clearinv, clean, cleaninv, cleaninventory]
+  kick:
+    usage: /<command> <player> [reason]
+    description: Ejecte un joueur du serveur.
+  msg:
+    usage: /<command> <to> <message>
+    description: Permet d'envoyer un message a un joueur.
+    aliases: [w,m,t,pm,tell,whisper]
+  reply:
+    usage: /<command> <message>
+    description: Permet de répondre a un message.
+    aliases: [r]
+  ban:
+    usage: /<command> <player> [reason]
+    description: Permet de bannir un joueur.
+  tempban:
+    usage: /<command> <player> <time> [reason]
+    description: Permet de bannir un joueur temporairement.
+  banip:
+    usage: /<command> <ip> [reason]
+    description: Permet de bannir une ip.
+  pardon:
+    usage: /<command> <player>
+    description: Permet de débannir un joueur.
+    aliases: [unban]
+  pardonip:
+    usage: /<command> <ip>
+    description: Permet de débannir une ip.
+    aliases: [unbanip]
+  about:
+    usage: /<command> <player>
+    description: Il est toujours cool de connaitre ses joueurs ^^.
+    aliases: [whois, lookup]
+  gamemode:
+    usage: /<command> <gamemode> [player]
+    description: Permet de changer de mode de jeu.
+    aliases: [gmc, gms, gm]
+  fly:
+    usage: /<command> [player]
+    description: Permet d'activé ou de désactivé le fly.
+    aliases: [flying]
+  hat:
+    usage: /<command>
+    description: Permet de transformer vos blocs en chapeau.
+  teleport:
+    usage: /<command>
+    description: Permet de se téléporter a un joueur.
+    aliases: [tp, telport, s, tphere]
+  time:
+    usage: /<command>
+    description: Permet de définir l'heure.
+    aliases: [night, day, tim]
+  weather:
+    usage: /<command>
+    description: Permet de définir le temps.
+    aliases: [sun, storm, wea, rain]
+  spawn:
+    usage: /<command> [player]
+    description: Téléporte au spawn.
+  setspawn:
+    usage: /<command>
+    description: Permet de définir le spawn.
+  group:
+    usage: /<command> help
+    description: Permet de gérer les groupes.
+  back:
+    usage: /<command>
+    description: Permet de retourner a votre dernière position.
+  broadcast:
+    usage: /<command> <message>
+    description: Permet d'afficher un message.
+    aliases: [b, say]
+  killall:
+    usage: /<command>
+    description: Permet de tuer toute les entités.
+    aliases: [butcher]
+  mute:
+    usage: /<command> <player> [time]
+    description: Permet de mute un joueur.
+  unmute:
+    usage: /<command> <player>
+    description: Permet de démute un joueur.
