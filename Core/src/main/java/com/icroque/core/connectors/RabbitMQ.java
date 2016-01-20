@@ -1,4 +1,4 @@
-package com.icroque.core.utils;
+package com.icroque.core.connectors;
 
 import com.icroque.core.Core;
 import com.rabbitmq.client.*;
@@ -18,8 +18,8 @@ public class RabbitMQ {
         //factory.setPort(Core.instance.getConfig().getInt("rabbitmq.port"));
         //factory.setUsername(Core.instance.getConfig().getString("rabbitmq.user"));
         //factory.setPassword(Core.instance.getConfig().getString("rabbitmq.password"));
-        factory.setHost("192.168.99.100");
-        factory.setPort(32773);
+        factory.setHost("local.dev");
+        factory.setPort(5672);
         factory.setUsername("root");
         factory.setPassword("root");
 

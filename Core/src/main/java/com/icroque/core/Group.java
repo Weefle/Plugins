@@ -1,6 +1,6 @@
 package com.icroque.core;
 
-import com.icroque.core.database.Database;
+import com.icroque.core.connectors.Database;
 import com.icroque.core.utils.PlayerData;
 import com.icroque.core.utils.TextUtils;
 import com.mongodb.BasicDBObject;

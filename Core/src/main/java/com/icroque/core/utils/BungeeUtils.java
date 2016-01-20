@@ -1,13 +1,13 @@
 package com.icroque.core.utils;
 
 import com.google.gson.Gson;
+import com.icroque.core.connectors.RabbitMQ;
 import lombok.Getter;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +27,9 @@ public class BungeeUtils {
         }, "minecraft");
     }
 
-
+    public boolean isOnBungee(String playerName) {
+        return players.contains(playerName);
+    }
 
     public ServerStatus pingServer(String adress, int port) {
         try {

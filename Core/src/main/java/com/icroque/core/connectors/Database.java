@@ -1,4 +1,4 @@
-package com.icroque.core.database;
+package com.icroque.core.connectors;
 
 import com.icroque.core.Core;
 import com.mongodb.*;

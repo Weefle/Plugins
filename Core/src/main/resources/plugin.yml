@@ -93,3 +93,6 @@ commands:
   unmute:
     usage: /<command> <player>
     description: Permet de démute un joueur.
+  help:
+    usage: /<command> [page]
+    description: Affiche l'aide

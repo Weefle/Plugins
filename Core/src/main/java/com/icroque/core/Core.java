@@ -1,7 +1,6 @@
 package com.icroque.core;
 
 import com.icroque.core.commands.*;
-import com.icroque.core.database.Database;
 import com.icroque.core.listeners.*;
 import com.icroque.core.utils.BungeeUtils;
 import com.icroque.core.utils.ConfigUtils;
@@ -22,10 +21,6 @@ public class Core extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         instance = this;
-        if(Database.getMongo() == null) {
-            getLogger().severe("Erreur, impossible de se connecter a MongoDB.");
-            getPluginLoader().disablePlugin(this);
-        }
         BungeeUtils.getInstance();
         TimeZone.setDefault(TimeZone.getTimeZone("Europe/Paris"));
         getConfig().options().copyDefaults(true);
@@ -65,6 +60,7 @@ public class Core extends JavaPlugin implements Listener {
         getCommand("broadcast").setExecutor(new BroadcastCommand());
         getCommand("mute").setExecutor(new MuteCommand());
         getCommand("unmute").setExecutor(new UnmuteCommand());
+        getCommand("help").setExecutor(new HelpCommand());
 
         for(Player target : Bukkit.getOnlinePlayers()) {
             new PlayerData(target);
@@ -89,5 +85,10 @@ public class Core extends JavaPlugin implements Listener {
         }
         catch (ClassNotFoundException e) {}
         catch (Exception e) {}
+    }
+
+    public boolean load() {
+
+        return false;
     }
 }

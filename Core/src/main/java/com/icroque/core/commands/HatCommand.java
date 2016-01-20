@@ -1,5 +1,6 @@
 package com.icroque.core.commands;
 
+import com.icroque.core.utils.ParticleEffect;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 

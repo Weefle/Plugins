@@ -17,8 +17,8 @@ public class BackCommand extends Command {
     public void command(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args) {
         Player player = (Player) sender;
         PlayerData data = PlayerData.findByName(player.getName());
-        if(data.lastTeleport != null) {
-            player.teleport(data.lastTeleport);
+        if(data.getLastTeleport() != null) {
+            player.teleport(data.getLastTeleport());
         }
         else {
             player.sendMessage("§f[§cErreur§f] §cImpossible de trouver votre dernière position.");

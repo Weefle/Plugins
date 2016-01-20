@@ -14,10 +14,10 @@ public class RabbitMQ {
 
     public RabbitMQ() {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("192.168.99.100");
-        factory.setPort(32773);
+        factory.setHost("local.dev");
         factory.setUsername("root");
         factory.setPassword("root");
+        factory.setPort(5672);
 
         try {
             connection = factory.newConnection();

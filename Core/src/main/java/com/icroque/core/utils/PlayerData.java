@@ -2,10 +2,11 @@ package com.icroque.core.utils;
 
 import com.icroque.core.Core;
 import com.icroque.core.Group;
-import com.icroque.core.database.Database;
-import com.icroque.core.database.IDocument;
+import com.icroque.core.connectors.Database;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
+import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
@@ -17,33 +18,41 @@ import java.util.Map;
 /**
  * Created by Rémi on 09/01/2016.
  */
-public class PlayerData implements IDocument {
+public class PlayerData {
     private static Map<String, PlayerData> playerData = new HashMap<String, PlayerData>();
-    // Core
-    private String player;
-    private Group group = Group.getDefault();
+    @Getter
+    private String playerName;
+    @Getter
+    private Group group;
+    @Getter
     private PermissionAttachment attachment;
-    // Others
+    @Getter @Setter
     private long mute = 0;
+    @Getter @Setter
     private long ban = 0;
-    public String replyTo = null;
-    public Scoreboard scoreboard = null;
-    public Location lastTeleport = null;
+    @Getter @Setter
+    private String replyTo = null;
+    @Getter @Setter
+    private Scoreboard scoreboard = null;
+    @Getter @Setter
+    private Location lastTeleport = null;
 
     public PlayerData(Player player) {
-        this.player = player.getName();
+        this.playerName = player.getName();
         this.attachment = player.addAttachment(Core.instance);
+        this.group = Group.getDefault();
 
-        playerData.put(this.player, this);
+        playerData.put(this.playerName, this);
         load();
     }
 
     public void load() {
-        DBObject playerDocument = Database.getPlayerCollection().findOne(new BasicDBObject("player", this.player));
+        DBObject playerDocument = Database.getPlayerCollection().findOne(new BasicDBObject("player", this.playerName));
         if(playerDocument == null) {
             save();
             return;
         }
+        // @TODO REFACTORING
         if(playerDocument.get("group") == null || playerDocument.get("group").toString().equalsIgnoreCase("null") || Group.getByName(playerDocument.get("group").toString()) == null) {
             group = Group.getDefault();
         }
@@ -56,7 +65,7 @@ public class PlayerData implements IDocument {
     }
 
     public void save() {
-        DBObject save = new BasicDBObject("player", this.player);
+        DBObject save = new BasicDBObject("player", this.playerName);
         DBObject playerDocument = Database.getPlayerCollection().findOne(save);
 
         if(playerDocument != null) {
@@ -74,17 +83,9 @@ public class PlayerData implements IDocument {
     }
 
     public void unload() {
-        if(playerData.containsKey(this.player)) {
-            playerData.remove(this.player);
+        if(playerData.containsKey(this.playerName)) {
+            playerData.remove(this.playerName);
         }
-    }
-
-    public PermissionAttachment getAttachment() {
-        return this.attachment;
-    }
-
-    public String getPlayerName() {
-        return this.player;
     }
 
     public boolean isMuted() {
@@ -93,18 +94,6 @@ public class PlayerData implements IDocument {
 
     public boolean isBanned() {
         return (this.ban > System.currentTimeMillis() || this.ban == -1);
-    }
-
-    public long getBanTime() {
-        return this.ban;
-    }
-
-    public void setMute(long time) {
-        this.mute = time;
-    }
-
-    public long getMuteTime() {
-        return this.mute;
     }
 
     public Group getGroup() {
@@ -116,10 +105,12 @@ public class PlayerData implements IDocument {
         group.recalculatePermissions(this);
     }
 
+    /* Return user data */
     public static PlayerData findByName(String name) {
         return playerData.get(name);
     }
 
+    /* Return all users data*/
     public static Collection<PlayerData> all() {
         return playerData.values();
     }

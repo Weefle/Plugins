@@ -23,11 +23,11 @@ public class ChatListener implements Listener {
         Player player = e.getPlayer();
         PlayerData data = PlayerData.findByName(e.getPlayer().getName());
         if(data.isMuted()) {
-            if(data.getMuteTime() == -1) {
+            if(data.getMute() == -1) {
                 player.sendMessage("§cErreur: vous avez été mute à vie.");
             }
             else {
-                Calendar calendar = DateUtils.getCalendar(data.getMuteTime());
+                Calendar calendar = DateUtils.getCalendar(data.getMute());
                 player.sendMessage("§cErreur: vous avez été mute jusqu'au "+ DateUtils.getDay(calendar.getTime()) +"/"+ DateUtils.getMonth(calendar.getTime()) +" à "+ DateUtils.getHour(calendar.getTime()) +"h"+ DateUtils.getMinute(calendar.getTime()) +".");
             }
             e.setCancelled(true);
