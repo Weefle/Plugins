@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .classpath
 .project
 .settings/
@@ -18,3 +19,19 @@ manifest.mf
 .idea/
 *.log*
 */src/main/lombok
+=======
+# ---> Java
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+>>>>>>> 788051bc74670b29ed7c9c669baa2fa5a4ca2460
