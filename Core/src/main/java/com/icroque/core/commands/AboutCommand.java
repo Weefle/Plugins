@@ -16,7 +16,8 @@ public class AboutCommand extends Command {
         super("about", "core.about", false);
     }
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public void command(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args) {
         if(args.length > 0) {
             Player target = Bukkit.getPlayer(args[0]);

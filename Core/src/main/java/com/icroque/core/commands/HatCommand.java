@@ -1,6 +1,5 @@
 package com.icroque.core.commands;
 
-import com.icroque.core.utils.ParticleEffect;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -13,7 +12,8 @@ public class HatCommand  extends Command {
         super("hat", "core.hat", true);
     }
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public void command(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args) {
         Player player = (Player) sender;
         player.getInventory().setHelmet(player.getItemInHand());

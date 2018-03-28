@@ -11,11 +11,11 @@ import org.bukkit.entity.Player;
 public class SetspawnCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    	Player player = (Player) sender;
         if(!(sender instanceof Player)) {
-            sender.sendMessage("§f[§cHub§f] §cSeul un joueur peut définir le spawn du serveur.");
+            player.sendMessage("§f[§cHub§f] §cSeul un joueur peut définir le spawn du serveur.");
             return true;
         }
-        Player player = (Player) sender;
 
         return true;
     }

@@ -18,7 +18,8 @@ public class BungeeUtils {
     @Getter
     private List<String> players;
 
-    public BungeeUtils() {
+    @SuppressWarnings("unchecked")
+	public BungeeUtils() {
         instance = this;
         RabbitMQ.getInstance().subscribe((String route, String message) -> {
             if(route.equalsIgnoreCase("getplayers")) {

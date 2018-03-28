@@ -13,7 +13,7 @@ public abstract class Command implements CommandExecutor {
     private boolean onlyPlayer;
 
     public Command(String name, String permission, boolean onlyPlayer) {
-        this.name = name;
+        this.setName(name);
         this.permission = permission;
         this.onlyPlayer = onlyPlayer;
     }
@@ -33,4 +33,12 @@ public abstract class Command implements CommandExecutor {
     }
 
     public abstract void command(CommandSender sender, org.bukkit.command.Command cmd, String label, String[] args);
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

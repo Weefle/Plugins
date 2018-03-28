@@ -11,11 +11,7 @@ public class Database {
 
     public static MongoClient getMongo() {
         if (mongo == null) {
-            MongoCredential credential = MongoCredential.createCredential(
-                    Core.instance.getConfig().getString("mongo.credential.user"),
-                    Core.instance.getConfig().getString("mongo.credential.database"),
-                    Core.instance.getConfig().getString("mongo.credential.password").toCharArray()
-            );
+        	MongoCredential.createCredential(Core.instance.getConfig().getString("mongo.credential.user"), Core.instance.getConfig().getString("mongo.credential.database"), Core.instance.getConfig().getString("mongo.credential.password").toCharArray());
             try {
                 mongo = new MongoClient(new ServerAddress(
                         Core.instance.getConfig().getString("mongo.host"),
@@ -30,7 +26,8 @@ public class Database {
         return mongo;
     }
 
-    public static DB getDatabase() {
+    @SuppressWarnings("deprecation")
+	public static DB getDatabase() {
         return getMongo().getDB("minecraft");
     }
 

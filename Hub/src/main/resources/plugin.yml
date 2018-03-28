@@ -1,6 +1,7 @@
 name: Hub
-version: 1.0.0
+version: 1.1
 main: com.icroque.hub.Hub
-author: iCroque
+authors: [iCroque, Weefle]
 website: http://www.icroque.com
 commands:
+  setspawn:
